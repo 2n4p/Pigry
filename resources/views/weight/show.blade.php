@@ -4,7 +4,7 @@
         <form action="{{ route('weight_logs.update'), $log }}" method="post">
             @csrf
             @method('PUT')
-            
+
             {{-- 日付 --}}
             <div class="log-date">
                 <label for="date">日付</label>
