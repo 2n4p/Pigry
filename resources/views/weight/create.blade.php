@@ -33,6 +33,9 @@
                 <label for="content"></label>
                 <input type="text" name="content" id="exercise_content" value="{{ old('content') }}">
             </div>
+
+            <button class="search-form__button-submit" type="submit">登録</button>
+            <a class="search-form__button-reset" href="/weight_logs">戻る</a>
         </form>
     </div>
 </x-app>
