@@ -18,21 +18,21 @@
             <label for="name">お名前</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}">
             @error('name')
-                <p>{{ $message }}</p>
+                <p style="color:red;">{{ $message }}</p>
             @enderror
 
             {{-- メールアドレス --}}
             <label for="email">メールアドレス</label>
             <input type="email" id="email" name="email" value="{{ old('email') }}">
             @error('email')
-                <p>{{ $message }}</p>
+                <p style="color:red;">{{ $message }}</p>
             @enderror
 
             {{-- パスワード --}}
             <label for="password">パスワード</label>
-            <input type="text" id="password" name="password" value="{{ old('password') }}">
+            <input type="password" id="password" name="password" value="{{ old('password') }}">
             @error('password')
-                <p>{{ $message }}</p>
+                <p style="color:red;">{{ $message }}</p>
             @enderror
 
             <button type="submit">次に進む</button>

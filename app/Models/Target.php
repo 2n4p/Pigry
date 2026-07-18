@@ -15,6 +15,7 @@ class Target extends Model
         'target_weight',
     ];
 
+    //リレーション（Userテーブル）
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -16,16 +16,16 @@
 
             {{-- 現在の体重 --}}
             <label for="current">現在の体重</label>
-            <input type="number" step="0.1" name="current" id="current" value="{{ old('current') }}">kg
+            <input type="text" name="current" id="current" value="{{ old('current') }}">kg
             @error('current')
-                <p>{{ $message }}</p>
+                <p style="color:red;">{{ $message }}</p>
             @enderror
 
             {{-- 目標の体重 --}}
             <label for="target">目標の体重</label>
-            <input type="number" step="0.1" name="target" id="target" value="{{ old('target') }}">kg
+            <input type="text" name="target" id="target" value="{{ old('target') }}">kg
             @error('target')
-                <p>{{ $message }}</p>
+                <p style="color:red;">{{ $message }}</p>
             @enderror
 
             <button type="submit">アカウント作成</button>

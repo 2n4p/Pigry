@@ -1,4 +1,23 @@
-<x-app>
+@extends('layouts.app')
+
+@section('title', '体重一覧')
+
+@section('header')
+    <header>
+        <div class="header">
+            <h1 class="header_title">Pigry</h1>
+            <a href="{{ route('weight.goal') }}">目標体重設定</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit">
+                    ログアウト
+                </button>
+            </form>
+        </div>
+    </header>
+@endsection
+
+@section('content')
     {{-- 体重表示 --}}
     <div class="weight-list">
         <table>
@@ -8,9 +27,9 @@
                 <th>最新体重</th>
             </tr>
             <tr>
-                <td>{{ $latest_target }}</td>
+                <td>{{ $target->target_weight }}</td>
                 <td>{{ $weight_difference }}</td>
-                <td>{{ $latest_weight }}</td>
+                <td>{{ $latest_weight->weight }}</td>
             </tr>
         </table>
     </div>
@@ -18,7 +37,7 @@
     {{-- ログ表示 --}}
     <div class="logs">
         <div class="logs-search">
-            <form class="search-form" action="/weight_logs/search" method="get">
+            <form class="search-form" action="{{ route('weight.search') }}" method="get">
                 @csrf
                 <div class="search-form__item">
                     <input class="search-form__item-date1" type="date" name="firstdate" value="{{ old('firstdate') }}">
@@ -27,13 +46,13 @@
                 </div>
                 <div class="search-form__button">
                     <button class="search-form__button-submit" type="submit">検索</button>
-                    <a class="search-form__button-reset" href="{{ route('weight_logs.index') }}">リセット</a>
+                    <a class="search-form__button-reset" href="{{ route('weight.index') }}">リセット</a>
                 </div>
             </form>
         </div>
 
         <div class="create-button">
-            <a class="create-button" href="/weight_logs/create">データ追加</a>
+            <a class="create-button" href="{{ route('weight.create') }}">データ追加</a>
         </div>
 
         <div class="logs-main">
@@ -45,18 +64,22 @@
                     <th>運動時間</th>
                     <th>　</th>
                 </tr>
-                @forelse( $logs as $log )
+                @foreach( $logs as $log )
                     <tr>
                         <td>{{ $log->date }}</td>
                         <td>{{ $log->weight }}</td>
                         <td>{{ $log->calories }}</td>
                         <td>{{ $log->exercise_time }}</td>
                         <td>
-                            <a href="route('/weight_logs/{$log->id}', $log)">編集</a>
+                            <!-- <a href="{{ route('weight.show', $log) }}">編集</a> -->
+                            <form action="{{ route('weight.show', $log->id) }}" method="get">
+                                @csrf
+                                <button type="submit">編集</button>
+                            </form>
                         </td>
                     </tr>
-                @endforelse
+                @endforeach
             </table>
         </div>
     </div>
-</x-app>
+@endsection
