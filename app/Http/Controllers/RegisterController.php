@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Register1Request;
+use App\Http\Requests\Register2Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Target;
@@ -14,7 +16,7 @@ class RegisterController extends Controller
         return view('auth.register1');
     }
 
-    public function keep(Request $request){
+    public function keep(Register1Request $request){
         session([
             'register.name' => $request->name,
             'register.email' => $request->email,
@@ -28,7 +30,7 @@ class RegisterController extends Controller
         return view('auth.register2');
     }
 
-    public function create(Request $request){
+    public function create(Register2Request $request){
         $user = User::create([
             'name' => session('register.name'),
             'email' => session('register.email'),
