@@ -2,8 +2,12 @@
 
 
 ## 環境構築
-git clone git@github.com:2n4p/Pigry.git <br>
+```
+git clone git@github.com:2n4p/Pigry.git
+```
+```
 cd Pigry
+```
 
 ### 依存関係のインストール
 ```php:コード
@@ -17,25 +21,37 @@ docker run --rm \
 ```
 
 ### 環境ファイル作成
+```
 cp .env.example .env
+```
 
 ### エイリアス設定
 - Zsh（Mac）の場合<br>
+```
 echo "alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'" >> ~/.zshrc
 exec $SHELL
+```
 
 - Bash（Linux）の場合<br>
+```
 echo "alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'" >> ~/.bashrc
 exec $SHELL
+```
 
 ### Sailの起動
+```
 sail up -d
+```
 
 ### アプリケーションキーの生成
+```
 sail artisan key:generate
+```
 
 ### マイグレーション・シーダーの実行
+```
 sail artisan migrate --seed
+```
 
 
 ## 使用技術
