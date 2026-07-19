@@ -15,11 +15,11 @@ class WeightController extends Controller
      */
     public function index()
     {
-        $target = Target::where('user_id', auth()->id())->latest()->first();
-        $latest_weight = Log::latest()->first();
-        $weight_difference = $latest_weight->weight - $target->weight_target;
+        $target = Target::where('user_id', auth()->id())->latest('id')->first();
+        $latest_weight = Log::where('user_id', auth()->id())->latest('date')->first();
+        $weight_difference = $latest_weight->weight - $target->target_weight;
 
-        $logs = Log::simplePaginate(8)->where('user_id', auth()->id())->sortByDesc('created_at');
+        $logs = Log::orderBy('date', 'desc')->where('user_id', auth()->id())->paginate(8);
 
         return view('weight_logs.index', compact('logs', 'target', 'weight_difference', 'latest_weight'));
     }
@@ -30,7 +30,7 @@ class WeightController extends Controller
         $latest_weight = Log::latest()->first();
         $weight_difference = $latest_weight->weight - $target->weight_target;
 
-        $logs = Log::simplePaginate(8)->sortByDesc('created_at')->where('created_at', '>=', $request->firstdate)->where('created_at', '<=', $request->lastdate);
+        $logs = Log::orderBy('date', 'desc')->where('user_id', auth()->id())->whereDate('date', '>=', $request->firstdate)->whereDate('date', '<=', $request->lastdate)->paginate(8)->appends($request->query());;
 
         return view('weight_logs.index', compact('logs', 'target', 'weight_difference', 'latest_weight'));
     }

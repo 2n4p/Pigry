@@ -40,9 +40,9 @@
             <form class="search-form" action="{{ route('weight.search') }}" method="get">
                 @csrf
                 <div class="search-form__item">
-                    <input class="search-form__item-date1" type="date" name="firstdate" value="{{ old('firstdate') }}">
+                    <input class="search-form__item-date1" type="date" name="firstdate" id="firstdate" value="{{ old('firstdate') }}">
                     ~
-                    <input class="search-form__item-date2" type="date" name="lastdate" value="{{ old('lastdate') }}">
+                    <input class="search-form__item-date2" type="date" name="lastdate" id="lastdate" value="{{ old('lastdate') }}">
                 </div>
                 <div class="search-form__button">
                     <button class="search-form__button-submit" type="submit">検索</button>
@@ -67,8 +67,8 @@
                 @foreach( $logs as $log )
                     <tr>
                         <td>{{ $log->date }}</td>
-                        <td>{{ $log->weight }}</td>
-                        <td>{{ $log->calories }}</td>
+                        <td>{{ $log->weight }}kg</td>
+                        <td>{{ $log->calories }}cal</td>
                         <td>{{ $log->exercise_time }}</td>
                         <td>
                             <!-- <a href="{{ route('weight.show', $log) }}">編集</a> -->
@@ -80,6 +80,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $logs->links() }}
         </div>
     </div>
 @endsection
