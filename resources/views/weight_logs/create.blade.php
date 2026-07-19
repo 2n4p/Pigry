@@ -38,8 +38,8 @@
             {{-- 運動時間 --}}
             <div class="log-time">
                 <label for="time">運動時間</label>
-                <input type="time" name="time" id="exercise_time" value="{{ old('time') }}">
-                @error('time')
+                <input type="time" name="exercise_time" id="exercise_time" value="{{ old('exercise_time') }}">
+                @error('exercise_time')
                     <p style="color:red;">{{ $message }}</p>
                 @enderror
             </div>
@@ -47,8 +47,8 @@
             {{-- 運動内容 --}}
             <div class="log-content">
                 <label for="content"></label>
-                <input type="text" name="content" id="content" value="{{ old('content') }}">
-                @error('content')
+                <input type="text" name="exercise_content" id="exercise_content" value="{{ old('exercise_content') }}">
+                @error('exercise_content')
                     <p style="color:red;">{{ $message }}</p>
                 @enderror
             </div>
