@@ -40,12 +40,12 @@ class WeightRequest extends FormRequest
                 'integer',
             ],
 
-            'time' => [
+            'exercise_time' => [
                 'required',
                 'date_format:H:i',
             ],
 
-            'content' => [
+            'exercise_content' => [
                 'max:120'
             ]
         ];
@@ -61,10 +61,10 @@ class WeightRequest extends FormRequest
             'calories.required' => '摂取カロリーを入力してください',
             'calories.integer' => '数字で入力してください',
 
-            'time.required' => '運動時間を入力してください',
-            'time.date' => '日付形式で入力してください',
+            'exercise_time.required' => '運動時間を入力してください',
+            'exercise_time.date' => 'H:i形式で入力してください',
 
-            'content.max' => '120文字以内で入力してください',
+            'exercise_content.max' => '120文字以内で入力してください',
         ];
     }
 }
