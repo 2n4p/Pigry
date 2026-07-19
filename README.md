@@ -6,6 +6,7 @@ git clone git@github.com:2n4p/Pigry.git <br>
 cd Pigry
 
 ### 依存関係のインストール
+'''php:コード
 docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
@@ -13,6 +14,7 @@ docker run --rm \
     -e COMPOSER_CACHE_DIR=/tmp/composer_cache \
     laravelsail/php82-composer:latest \
     composer install
+'''
 
 ### 環境ファイル作成
 cp .env.example .env
