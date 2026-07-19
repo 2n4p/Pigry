@@ -2,7 +2,7 @@
 
 
 ## 環境構築
-git clone git@github.com:2n4p/Pigry.git
+git clone git@github.com:2n4p/Pigry.git <br>
 cd Pigry
 
 ### 依存関係のインストール
@@ -18,11 +18,11 @@ docker run --rm \
 cp .env.example .env
 
 ### エイリアス設定
-- Zsh（Mac）の場合
+- Zsh（Mac）の場合<br>
 echo "alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'" >> ~/.zshrc
 exec $SHELL
 
-- Bash（Linux）の場合
+- Bash（Linux）の場合<br>
 echo "alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'" >> ~/.bashrc
 exec $SHELL
 
@@ -42,7 +42,7 @@ sail artisan migrate --seed
 
 
 ## ER図
-![image](.\ER.drawio.png)
+![image](./ER.drawio.png)
 
 ## URL
 - ログイン
